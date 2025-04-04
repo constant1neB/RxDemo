@@ -4,7 +4,6 @@ package com.example.rxdemo.controller;
 import com.example.rxdemo.exceptions.EmailUniquenessException;
 import com.example.rxdemo.model.User;
 import com.example.rxdemo.repository.UserRepository;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import reactor.core.publisher.Flux;
@@ -39,12 +38,12 @@ public class UserController {
     }
 
     @GetMapping("/{id}")
-    public Mono<User> getUserById(@PathVariable String id) {
+    public Mono<User> getUserById(@PathVariable Long id) {
         return userRepository.findById(id);
     }
 
     @DeleteMapping("/{id}")
-    public Mono<Void> deleteUserById(@PathVariable String id) {
+    public Mono<Void> deleteUserById(@PathVariable Long id) {
         return userRepository.deleteById(id);
     }
 
